@@ -165,7 +165,7 @@ function writeToFile(fileName, info){
 function init(){
     inquirer.prompt(prompts)
     .then((inquirerResponse)=> {
-        writeToFile('README.md'), readmeGenerated({...inquirerResponse});
+        writeToFile(('README.md'), readmeGenerated({...inquirerResponse}));
     })
 } 
 init()
