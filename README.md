@@ -14,18 +14,18 @@
  
   
   ## Install 
-  ds
+  fds
   
   ## Use
   undefined
   
   ## Test
-  ds
+  fds
   
   ## Creator
-  ds
+  dfd
   
   ## Licensing
-  ds
+  fds
   
   
