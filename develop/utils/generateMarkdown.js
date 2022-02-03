@@ -3,7 +3,7 @@ function readmeGenerated(info) {
   
   ## Information
 
-  ${info.description}
+  ${info.information}
   
   ## Index
 
@@ -33,9 +33,9 @@ function readmeGenerated(info) {
 }
 
 
-function renderBadge(licencing) {
+function renderBadge(licensing) {
     
-    switch (licencing) {
+    switch (licensing) {
       
       case 'GNU AGPLv3': return `![GNU AGPLv3](https://img.shields.io/badge/license-GNU%20AGPLv3-brightgreen)`;
       case 'GNU GPLv3': return `![GNU GPLv3](https://img.shields.io/badge/license-GNU%20GPLv3-brightgreen)`;
@@ -52,13 +52,15 @@ function renderBadge(licencing) {
     const steps = installation.split(', ');
   
     return `${steps.map((element, index) => {
+      
       return `
+      
       ${index++}. ${element}`
       })}`
   };
   
-  function generateLicense(license) {
-    switch (license) {
+  function generateLicensing(licensing) {
+    switch (licensing) {
       case 'GNU AGPLv3': return `[GNU AGPLv3](https://choosealicense.com/licenses/agpl-3.0/)`;
       case 'GNU GPLv3': return `[GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)`;
       case 'GNU LGPLv3': return `[GNU LGPLv3](https://choosealicense.com/licenses/lgpl-3.0/)`;
@@ -69,32 +71,23 @@ function renderBadge(licencing) {
       case 'The Unilicense': return `[The Unilicese](https://choosealicense.com/licenses/unlicense/)`;
     }
   };
-  
-  function generateCredits(credits) {
-    if(!credits) {
-      return ''
-    }
-  
-    return `
-    ## Credits
-    ${credits.map(({ contributor }) => {
-        return `[${contributor}](https://github.com/${contributor}) `;
-    })
-    .join('')}
-    `
-  };
-  
-  
+   
   module.exports = markdownData => {
-    const { installation, license, credits, ...data} = markdownData;
+    const { installation, licensing, ...info} = markdownData;
     return `
-    # ${data.title}
-    ${renderBadge(license)}
-    ## Description
-    ${data.description}
-    [Deployed Application](${data.link})
+    
+    # ${info.title}
+    
+    ${renderBadge(licensing)}
+    
+    ## Information
+    
+    ${info.information}
+    
+    [Deployed Application](${info.link})
    
     ## Index
+    
     * [Installation](#installation)
     * [Use](#use)
     * [Creator](#creator)
