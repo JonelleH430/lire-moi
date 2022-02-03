@@ -158,8 +158,8 @@ const prompts = [
 //     })
 // }
 
-function writeToFile(fileName, data){
-    return fs.writeFileSync(path.join(process.cwd(), fileName), data);
+function writeToFile(fileName, info){
+    return fs.writeFileSync(path.join(process.cwd(), fileName), info);
 }
 
 function init(){
