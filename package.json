@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JonelleH430/readme.git"
+    "url": "git+https://github.com/JonelleH430/lire-moi.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/JonelleH430/readme/issues"
   },
-  "homepage": "https://github.com/JonelleH430/readme#readme",
+  "homepage": "https://github.com/JonelleH430/lire-moi#lire-moi",
   "dependencies": {
     "fs": "^0.0.1-security",
     "inquirer": "^8.2.0"
