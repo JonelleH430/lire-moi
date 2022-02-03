@@ -7,15 +7,15 @@ function readmeGenerated(info) {
   
   ## Index
 
-  *[Installation](#installation)
+  *[Install](#install)
   *[Test](#test)
   *[Use](#use)
   *[Licensing](#licensing)
   *[Creator](#creator)
  
   
-  ## Installation 
-  ${info.installation}
+  ## Install 
+  ${info.install}
   
   ## Use
   ${info.use}
@@ -48,8 +48,9 @@ function renderBadge(licensing) {
     }
   }
   
-  function generateInstallation(installation) {
-    const steps = installation.split(', ');
+  function generateInstall(install) {
+    
+    const steps = install.split(', ');
   
     return `${steps.map((element, index) => {
       
@@ -72,8 +73,8 @@ function renderBadge(licensing) {
     }
   };
    
-  module.exports = markdownData => {
-    const { installation, licensing, ...info} = markdownData;
+  module.exports = markdownInfo => {
+    const { install, licensing, ...info} = markdownInfo;
     return `
     
     # ${info.title}
@@ -88,15 +89,15 @@ function renderBadge(licensing) {
    
     ## Index
     
-    * [Installation](#installation)
+    * [Install](#install)
     * [Use](#use)
     * [Creator](#creator)
     * [Test](#test)
     * [Licensing](#licensing)
      
-    ## Installation
+    ## Install
     
-    ${generateInstallation(installation)}
+    ${generateInstall(install)}
     
     ## Use
    
@@ -113,7 +114,6 @@ function renderBadge(licensing) {
     
     ${generateLicensing(licensing)}
     
-    ## Questions
     [My GitHub](https://github.com/${info.github}) | 
   `;
   }
