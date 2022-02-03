@@ -1,9 +1,9 @@
-function readmeGenerated(info) {
+function readmeGenerated(data) {
   return `
   
   ## Information
 
-  ${info.information}
+  ${data.information}
   
   ## Index
 
@@ -15,19 +15,19 @@ function readmeGenerated(info) {
  
   
   ## Install 
-  ${info.install}
+  ${data.install}
   
   ## Use
-  ${info.use}
+  ${data.use}
   
   ## Test
-  ${info.test}
+  ${data.test}
   
   ## Creator
-  ${info.creator}
+  ${data.creator}
   
   ## Licensing
-  ${info.licensing}
+  ${data.licensing}
   
   `
 }
@@ -73,19 +73,19 @@ function renderBadge(licensing) {
     }
   };
    
-  module.exports = markdownInfo => {
-    const { install, licensing, ...info} = markdownInfo;
+  module.exports = markdowndata => {
+    const { install, licensing, ...data} = markdowndata;
     return `
     
-    # ${info.title}
+    # ${data.title}
     
     ${renderBadge(licensing)}
     
     ## Information
     
-    ${info.information}
+    ${data.information}
     
-    [Deployed Application](${info.link})
+    [Deployed Application](${data.link})
    
     ## Index
     
@@ -101,20 +101,20 @@ function renderBadge(licensing) {
     
     ## Use
    
-    ${info.use}
+    ${data.use}
     
     ## Creator
-    ${info.creator}
+    ${data.creator}
     
     ## Test
     
-    ${info.test}
+    ${data.test}
     
     ## Licensing
     
     ${generateLicensing(licensing)}
     
-    [My GitHub](https://github.com/${info.github}) | 
+    [My GitHub](https://github.com/${data.github}) | 
   `;
   }
 

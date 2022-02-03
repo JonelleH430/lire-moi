@@ -1,7 +1,7 @@
 {
   "name": "readme",
   "version": "1.0.0",
-  "description": "",
+  "information": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,14 +10,17 @@
     "type": "git",
     "url": "git+https://github.com/JonelleH430/lire-moi.git"
   },
-  "author": "",
-  "license": "ISC",
+  "creator": "",
+  "licensing": "ISC",
   "bugs": {
     "url": "https://github.com/JonelleH430/readme/issues"
   },
   "homepage": "https://github.com/JonelleH430/lire-moi#lire-moi",
   "dependencies": {
-    "fs": "^0.0.1-security",
-    "inquirer": "^8.2.0"
-  }
+    "inquirer": "^8.2.0",
+    "path": "^0.12.7"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
