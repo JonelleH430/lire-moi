@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const generateMarkdown = require('./develop/utils/generateMarkdown');
+const readmeGenerated = require('./develop/utils/readmeGenerated');
 const fs = require('fs');
 
 const questions = () => {
@@ -12,20 +12,20 @@ const questions = () => {
                 if (titleInput) {
                     return true;
                 } else {
-                    console.log('Please enter a title.');
+                    console.log('title');
                     return false;
                 }
             }
         },
         {
             type: 'input',
-            name: 'description',
-            message: 'Provide a detailed description of your application (Required)',
-            validate: descriptionInput => {
-                if(descriptionInput) {
+            name: 'Information',
+            message: 'Provide Information for your application (Required)',
+            validate: informationInput => {
+                if(informationInput) {
                     return true;
                 } else {
-                    console.log('Please provide description.');
+                    console.log('Provide Info');
                     return false;
                 }
             }
@@ -45,14 +45,14 @@ const questions = () => {
         },
         {
             type: 'list',
-            name: 'license',
+            name: 'licensing',
             message: 'What licence are you using on this project?',
             choices: ['GNU AGPLv3', 'GNU GPLv3', 'GNU LGPLv3', 'Mozilla Public 2.0', 'Apache 2.0', 'MIT', 'Boost Software 1.0', 'The Unlicense'],
         },
         {
             type: 'input',
-            name: 'usage',
-            message: 'Provide a description of how to use your app (Required)',
+            name: 'use',
+            message: 'Provide description of how to use your app (Required)',
             validate: nameInput => {
                 if (nameInput) {
                     return true;
@@ -64,17 +64,17 @@ const questions = () => {
         },
         {
             type: 'input',
-            name: 'installation',
-            message: 'Provide a step-by-step description of how to get the development environment running. Seperate steps with an "," (Recommended)'
+            name: 'install',
+            message: 'Provide step-by-step instructions of how to get the development environment running. Seperate steps with "," (Recommended)'
         },
         {
             type: 'input',
-            name: 'contributing',
+            name: 'creator',
             message: 'If you would like other developers to be able to contribute to this application, please provide guidelines on how to do so (Recommended)'
         },
         {
             type: 'input',
-            name: 'tests',
+            name: 'test',
             message: 'Provide examples of how to run tests on your application (Recommended)'
         },
         {
@@ -89,73 +89,14 @@ const questions = () => {
                     return false;
                 }
             }
-        },
-        {
-            type: 'input',
-            name: 'email',
-            message: 'Provide an email where you can be contacted (Required)',
-            validate: nameInput => {
-                if(nameInput) {
-                    return true;
-                } else {
-                    console.log('Please provide an email.');
-                    return false;
-                }
-            }
-        },
-        {
-            type: 'confirm',
-            name: 'confirmCredits',
-            message: 'Are there other contributors for this project you would like to credit?',
-            default: false
-        }
+        },     
     ])
 };
 
-const addCredits = readmeData => {
-    if (!readmeData.credits) {
-        readmeData.credits = [];
-    }
-    return inquirer.prompt([
-        {
-            type: 'input',
-            name: 'contributor',
-            message: 'Provide the GitHub username of the contributor:',
-        },
-        {
-            type: 'confirm',
-            name: 'confirmAddCredit',
-            message: 'Would you like to credit another contributor?',
-            default: false
-        }
-    ])
-    .then (credit => {
-        readmeData.credits.push(credit);
-        if (credit.confirmAddCredit){
-            addCredits(readmeData);
-        } else {
-            return generateMarkdown(readmeData);
-        }
-    })
-    .then(markdown => {
-        writeToFile(markdown);
-    })
-};
-
-
-function writeToFile(data) {
-    fs.writeFile('./dist/README.md', data, err =>{
+function writeToFile(info) {
+    
+    fs.writeFile('./dist/README.md', info, err =>{
         if (err) throw err;
         console.log('README file complete!');
     })
 }
-
-
-questions()
-.then(readmeData => {
-    if(readmeData.confirmCredits) {
-        addCredits(readmeData);
-    } else {
-        console.log(generateMarkdown(readmeData));
-    }
-});
