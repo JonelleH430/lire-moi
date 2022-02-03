@@ -1,7 +1,6 @@
 const inquirer = require('inquirer');
 const generateMarkdown = require('./develop/utils/generateMarkdown');
 const fs = require('fs');
-//const { deserialize } = require('v8');//
 
 const questions = () => {
     return inquirer.prompt([

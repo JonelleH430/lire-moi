@@ -1,5 +1,42 @@
-function renderBadge(licence) {
-    switch (licence) {
+function readmeGenerated(info) {
+  return `
+  
+  ## Information
+
+  ${info.description}
+  
+  ## Index
+
+  *[Installation](#installation)
+  *[Test](#test)
+  *[Use](#use)
+  *[Licensing](#licensing)
+  *[Creator](#creator)
+ 
+  
+  ## Installation 
+  ${info.installation}
+  
+  ## Use
+  ${info.use}
+  
+  ## Test
+  ${info.test}
+  
+  ## Creator
+  ${info.creator}
+  
+  ## Licensing
+  ${info.licensing}
+  
+  `
+}
+
+
+function renderBadge(licencing) {
+    
+    switch (licencing) {
+      
       case 'GNU AGPLv3': return `![GNU AGPLv3](https://img.shields.io/badge/license-GNU%20AGPLv3-brightgreen)`;
       case 'GNU GPLv3': return `![GNU GPLv3](https://img.shields.io/badge/license-GNU%20GPLv3-brightgreen)`;
       case 'GNU LGPLv3': return `![GNU LGPLv3](https://img.shields.io/badge/license-GNU%20LGPLv3-brightgreen)`;
@@ -56,27 +93,36 @@ function renderBadge(licence) {
     ## Description
     ${data.description}
     [Deployed Application](${data.link})
-    ## Table of Contents
+   
+    ## Index
     * [Installation](#installation)
-    * [Usage](#usage)
-    * [Contributing](#contributing)
-    * [Tests](#tests)
-    * [License](#license)
-    * [Credits](#credits)
-    * [Questions](#questions)
+    * [Use](#use)
+    * [Creator](#creator)
+    * [Test](#test)
+    * [Licensing](#licensing)
+     
     ## Installation
+    
     ${generateInstallation(installation)}
-    ## Usage
-    ${data.usage}
-    ## Contributing
-    ${data.contributing}
-    ## Tests
-    ${data.tests}
-    ## License
-    ${generateLicense(license)}
-    ${generateCredits(credits)}
+    
+    ## Use
+   
+    ${info.use}
+    
+    ## Creator
+    ${info.creator}
+    
+    ## Test
+    
+    ${info.test}
+    
+    ## Licensing
+    
+    ${generateLicensing(licensing)}
+    
     ## Questions
-    [My GitHub](https://github.com/${data.github}) | 
-    [Email Me](mailto:${data.email})
+    [My GitHub](https://github.com/${info.github}) | 
   `;
   }
+
+  module.exports = readmeGenerated;
